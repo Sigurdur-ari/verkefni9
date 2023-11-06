@@ -11,7 +11,7 @@ export function renderSearchForm(searchHandler, query = undefined) {
   /* TODO útfæra */
   const form = el(
     'form',
-    {},
+    { class: 'search' },
     el('input', { value: query ?? '', name: 'query' }),
     el('button', {}, 'leita')
   );
@@ -100,6 +100,7 @@ function createSearchResults(results, query) {
       'li',
       { class: 'result' },
       el('span', { class: 'name' }, result.name),
+      el('span', { class: 'status' }, result.status.name),
       el('span', { class: 'mission' }, result.mission)
     );
 

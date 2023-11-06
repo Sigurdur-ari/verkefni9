@@ -64,3 +64,39 @@ main {
 }
 
 /* TODO nánari stílar */
+
+/*leitarniðurstöður og útlit á forsíðu*/
+.results{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+
+  gap: var(--spacing);
+  
+}
+
+.result{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  grid-column: span 12;
+
+  background-color: rgb(230, 230, 230);
+  border: solid black 3px;
+  border-radius: 5px;
+}
+
+.status{
+  flex: 1;
+}
+
+.heading{
+  text-align: center;
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+
+  gap: var(--spacing);
+}
