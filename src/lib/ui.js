@@ -172,21 +172,32 @@ export function renderFrontpage(
  * @param {string} id Auðkenni geimskots.
  */
 export async function renderDetails(parentElement, id) {
+  setLoading(parentElement);
+  const launch = await getLaunch(id);
+  setNotLoading(parentElement);
+
+  if (!launch) {
+    const noResultsElement = el(
+      'li',
+      {},
+      `Engar niðurstöður fyrir leit að geimskoti með id: ${id}`
+    );
+    parentElement.appendChild(noResultsElement);
+    return;
+  }
   const container = el(
     'main',
     {},
-    el('h1', { class: 'launch-name' }),
+    el('h1', { class: 'launch-name' }, `${launch.name}`),
     el(
       'div',
       { class: 'windows' },
-      el('p', { class: 'start' }, `Gluggi opnaði: ${}`),
-      el('p', { class: 'end' }, `Glukki lokaði: ${}`)
+      el('p', { class: 'start' }, `Gluggi opnaði: ${launch.window_start}`),
+      el('p', { class: 'end' }, `Glukki lokaði: ${launch.window_end}`)
     ),
-    el('img', {class: 'image', src: `${}`}),
-    el('span', {class: 'status-name'}), 
-    el('span', {class: 'status-description'}), 
-    el('span', {class: 'mission-name'}), 
-    el('span', {class: 'mission-description'})
+    el('img', { class: 'image', src: `${launch.image}` }),
+    el('span', { class: 'status-detail' }, `${launch.status}`),
+    el('span', { class: 'mission-detail' }, `${launch.mission}`)
   );
 
   const backElement = el(
@@ -195,15 +206,16 @@ export async function renderDetails(parentElement, id) {
     el('a', { href: '/' }, 'Til baka')
   );
 
+  container.appendChild(backElement);
+
   parentElement.appendChild(container);
 
   /* TODO setja loading state og sækja gögn */
 
   // Tómt og villu state, við gerum ekki greinarmun á þessu tvennu, ef við
   // myndum vilja gera það þyrftum við að skilgreina stöðu fyrir niðurstöðu
-  if (!result) {
-    /* TODO útfæra villu og tómt state */
-  }
+
+  /* TODO útfæra villu og tómt state */
 
   /* TODO útfæra ef gögn */
 }
