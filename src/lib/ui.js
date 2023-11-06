@@ -172,7 +172,23 @@ export function renderFrontpage(
  * @param {string} id Auðkenni geimskots.
  */
 export async function renderDetails(parentElement, id) {
-  const container = el('main', {});
+  const container = el(
+    'main',
+    {},
+    el('h1', { class: 'launch-name' }),
+    el(
+      'div',
+      { class: 'windows' },
+      el('p', { class: 'start' }, `Gluggi opnaði: ${}`),
+      el('p', { class: 'end' }, `Glukki lokaði: ${}`)
+    ),
+    el('img', {class: 'image', src: `${}`}),
+    el('span', {class: 'status-name'}), 
+    el('span', {class: 'status-description'}), 
+    el('span', {class: 'mission-name'}), 
+    el('span', {class: 'mission-description'})
+  );
+
   const backElement = el(
     'div',
     { class: 'back' },
