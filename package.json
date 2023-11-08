@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "browser-sync start --server --files ./src/ styles.css index.html",
     "lint": "eslint ./**/*.js",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "copy:html": "cpy ./*.html ./build/",
+    "copy:js": "cpy ./*/*/*.js ./*.js ./*/*.js ./build/",
+    "copy:css": "cpy ./*.css ./build/",
+    "build": "concurrently npm:copy:*"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +22,9 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "prettier": "^3.0.3"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "cpy-cli": "^5.0.0"
   }
 }
