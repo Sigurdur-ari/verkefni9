@@ -100,3 +100,43 @@ main {
 
   gap: var(--spacing);
 }
+
+.nosearch{
+  grid-column: span 12;
+}
+
+/*DETAIL SÍÐA*/
+
+.details{
+  display: flex;
+  flex-direction: column;
+
+  background-color: blanchedalmond;
+  padding: var(--spacing);
+}
+
+.launch-name{
+  text-align: center;
+  
+}
+
+.windows{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image{
+  height: 500px;
+  width: 400px;
+
+  align-self: center;
+}
+
+.status-name, .status-description{
+  text-align: left;
+}
+.mission-name, .mission-description{
+  text-align: right;
+}
+

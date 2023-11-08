@@ -88,7 +88,7 @@ function createSearchResults(results, query) {
   if (results.length === 0) {
     const noResultsElement = el(
       'li',
-      {},
+      { class: 'nosearch' },
       `Engar niðurstöður fyrir leit að ${query}`
     );
     list.appendChild(noResultsElement);
@@ -99,7 +99,7 @@ function createSearchResults(results, query) {
     const resultElement = el(
       'li',
       { class: 'result' },
-      el('span', { class: 'name' }, result.name),
+      el('span', { class: 'name' }, el('a', { href: '' }, result.name)),
       el('span', { class: 'status' }, result.status.name),
       el('span', { class: 'mission' }, result.mission)
     );
@@ -179,15 +179,16 @@ export async function renderDetails(parentElement, id) {
   if (!launch) {
     const noResultsElement = el(
       'li',
-      {},
+      { class: 'no-result' },
       `Engar niðurstöður fyrir leit að geimskoti með id: ${id}`
     );
     parentElement.appendChild(noResultsElement);
     return;
   }
+
   const container = el(
     'main',
-    {},
+    { class: 'details' },
     el('h1', { class: 'launch-name' }, `${launch.name}`),
     el(
       'div',
@@ -196,8 +197,10 @@ export async function renderDetails(parentElement, id) {
       el('p', { class: 'end' }, `Glukki lokaði: ${launch.window_end}`)
     ),
     el('img', { class: 'image', src: `${launch.image}` }),
-    el('span', { class: 'status-detail' }, `${launch.status}`),
-    el('span', { class: 'mission-detail' }, `${launch.mission}`)
+    el('span', { class: 'status-name' }, `${launch.status}`),
+    el('span', { class: 'status-description' }, `${launch.status}`),
+    el('span', { class: 'mission-name' }, `${launch.mission}`),
+    el('span', { class: 'mission-description' }, `${launch.mission}`)
   );
 
   const backElement = el(

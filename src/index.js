@@ -50,6 +50,11 @@ function route() {
 // Bregst við því þegar við notum vafra til að fara til baka eða áfram.
 window.onpopstate = () => {
   /* TODO bregðast við */
+  const element = document.querySelector('body');
+  if (!element) {
+    return;
+  }
+  empty(element);
 };
 
 // Athugum í byrjun hvað eigi að birta.
