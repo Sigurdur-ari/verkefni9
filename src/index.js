@@ -55,6 +55,7 @@ window.onpopstate = () => {
     return;
   }
   empty(element);
+  route();
 };
 
 // Athugum í byrjun hvað eigi að birta.

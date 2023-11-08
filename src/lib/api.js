@@ -76,7 +76,6 @@ export async function getLaunch(id) {
 
   const url = new URL('launch', API_URL);
   url.searchParams.set('id', id);
-  console.log(url);
 
   let response;
   try {
