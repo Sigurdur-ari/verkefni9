@@ -76,6 +76,7 @@ export async function getLaunch(id) {
 
   const url = new URL('launch', API_URL);
   url.searchParams.set('id', id);
+  console.log(url);
 
   let response;
   try {
@@ -102,5 +103,12 @@ export async function getLaunch(id) {
     return null;
   }
 
-  return json.results;
+  return {
+    name: json.name,
+    status: json.status,
+    mission: json.mission,
+    window_start: json.window_start,
+    window_end: json.window_end,
+    image: json.image,
+  };
 }
