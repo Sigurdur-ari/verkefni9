@@ -78,9 +78,6 @@ export async function getLaunch(id) {
   url.searchParams.set('id', id);
   const urlString = url.toString();
   const newUrl = urlString.replace('?id=', '');
-  console.log(urlString);
-
-  console.log(newUrl);
 
   let response;
   try {
