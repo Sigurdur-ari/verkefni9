@@ -74,13 +74,17 @@ export async function searchLaunches(query) {
 export async function getLaunch(id) {
   /* TODO útfæra */
 
-  const url = new URL('launch', API_URL);
+  const url = new URL('launch/', API_URL);
   url.searchParams.set('id', id);
-  console.log(url);
+  const urlString = url.toString();
+  const newUrl = urlString.replace('?id=', '');
+  console.log(urlString);
+
+  console.log(newUrl);
 
   let response;
   try {
-    response = await fetch(url);
+    response = await fetch(newUrl);
   } catch (e) {
     console.error('villa kom upp við að sækja gögn', e);
     return null;

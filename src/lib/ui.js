@@ -101,10 +101,14 @@ export async function renderDetails(parentElement, id) {
       el('p', { class: 'end' }, `Glukki lokaði: ${launch.window_end}`)
     ),
     el('img', { class: 'image', src: `${launch.image}` }),
-    el('span', { class: 'status-name' }, `${launch.status}`),
-    el('span', { class: 'status-description' }, `${launch.status}`),
-    el('span', { class: 'mission-name' }, `${launch.mission}`),
-    el('span', { class: 'mission-description' }, `${launch.mission}`)
+    el('span', { class: 'status-name' }, `${launch.status.name}`),
+    el('span', { class: 'status-description' }, `${launch.status.description}`),
+    el('span', { class: 'mission-name' }, `${launch.mission.name}`),
+    el(
+      'span',
+      { class: 'mission-description' },
+      `${launch.mission.description}`
+    )
   );
 
   const backElement = el(
